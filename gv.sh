@@ -16,13 +16,13 @@ read
 echo "请输入你的cURL(bash)"
 read curl
 
-echo "请输入你要申请的GV号（纯数字10位，如：3859998880）"
+echo "请输入你要申请的GV号（数字10位，如：(385) 999-8880）"
 read gv
-
+gv_clean=`echo $gv | tr -cd "[0-9]"`
 echo $curl > gv.txt
 
 sed -i 's/mid=2/mid=6/' gv.txt
-sed -i 's/true%5D/%22%2B1'$gv'%22%2Ctrue%2C%22%22%5D/' gv.txt
+sed -i 's/true%5D/%22%2B1'$gv_clean'%22%2Ctrue%2C%22%22%5D/' gv.txt
 
 echo "按Enter开始刷号";
 read
